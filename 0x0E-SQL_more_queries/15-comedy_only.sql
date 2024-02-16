@@ -1,11 +1,10 @@
--- lists all genres of the show Dexter.
-   -- Each record should display:
-      -- tv_genres.name
-   -- Results must be sorted in ascending order by the genre name
-   -- The database name will be passed as an argument of the mysql command
-
-SELECT name FROM tv_genres
-JOIN tv_show_genres ON id=tv_show_genres.genre_id
-JOIN tv_shows ON tv_shows.id=tv_show_genres.show_id
-WHERE tv_shows.title = 'Dexter'
-ORDER BY name;
+-- List all Comedy shows in 'hbtn_0d_tvshows'
+-- 'tv_genres' table contains only one record where name = Comedy
+-- Results must be sorted in ascending order by the show title
+-- You can only use one SELECT statement
+SELECT tv_shows.title
+FROM tv_shows
+INNER JOIN tv_show_genres m ON tv_shows.id = m.show_id
+INNER JOIN tv_genres g ON m.genre_id = g.id
+WHERE g.name = 'Comedy'
+ORDER BY tv_shows.title ASC;
